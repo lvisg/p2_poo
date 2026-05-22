@@ -29,18 +29,8 @@ public class RegistroVacinacaoController {
         }
     }
     @GetMapping
-    public ResponseEntity<Page<RegistroVacinacao>> listar(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "30") int size,
-            @RequestParam(required = false) String estado,
-            @RequestParam(required = false) String faixaEtaria) {
-        if (StringUtils.hasText(estado)) {
-            return ResponseEntity.ok(registroVacinacaoService.buscaPorUf(estado, page, size));
-        }
-        if (StringUtils.hasText(faixaEtaria)) {
-            return ResponseEntity.ok(registroVacinacaoService.buscaPorFaixaEtaria(faixaEtaria, page, size));
-        }
-        return ResponseEntity.ok(registroVacinacaoService.listar(page, size));
+    public ResponseEntity<Page<RegistroVacinacao>> listar(@RequestParam(defaultValue = "0")  int page, @RequestParam(defaultValue = "30") int size, @RequestParam(required = false) String estado, @RequestParam(required = false) String faixaEtaria, @RequestParam(required = false)String vacina) {
+        return ResponseEntity.ok(registroVacinacaoService.buscar(estado, faixaEtaria, vacina, page, size));
     }
     @GetMapping("/{id}")
     public ResponseEntity<RegistroVacinacao> carregar(@PathVariable Integer id){
@@ -51,7 +41,7 @@ public class RegistroVacinacaoController {
     @PostMapping
     public ResponseEntity<RegistroVacinacao> salvar(@RequestBody RegistroVacinacao registroVacinacao){
         registroVacinacaoService.salvar(registroVacinacao);
-        return ResponseEntity.ok(registroVacinacao);
+        return ResponseEntity.status(201).body(registroVacinacao);
     }
     @PutMapping("/{id}")
     public ResponseEntity<RegistroVacinacao> alterar(@RequestBody RegistroVacinacao registroVacinacao, @PathVariable Integer id){

@@ -5,8 +5,8 @@ import br.com.fatec.apiimunidata.repository.RegistroVacinacaoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 
@@ -40,20 +40,34 @@ public class RegistroVacinacaoService {
             return registroVacinacaoRepository.save(obj);
         });
     }
-    public Page<RegistroVacinacao> buscaPorUf(String uf, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return registroVacinacaoRepository.findRegistroVacinacaoByUf(uf, pageable);
-    }
-    public Page<RegistroVacinacao> buscaPorFaixaEtaria(String faixaEtaria, int page, int size){
-        Pageable pageable = PageRequest.of(page, size);
+
+    public int[] faixaEtaria(String faixaEtaria){
         if(faixaEtaria.equals("Criança")){
-            return registroVacinacaoRepository.findRegistroVacinacaoByFaixaEtaria(0,12, pageable);
+            return new int[] {0, 12};
         } else if (faixaEtaria.equals("Adolescente")) {
-            return registroVacinacaoRepository.findRegistroVacinacaoByFaixaEtaria(12,18, pageable);
+            return new int[] {12,18};
         }else if (faixaEtaria.equals("Adulto")){
-            return registroVacinacaoRepository.findRegistroVacinacaoByFaixaEtaria(18,65, pageable);
+            return new int[] {18,65};
         }
-        return registroVacinacaoRepository.findRegistroVacinacaoByFaixaEtaria(65,999, pageable);
+        return new int[] {65,130};
+    }
+    public Page<RegistroVacinacao> buscar(String estado, String faixaEtaria, String vacina, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        boolean temEstado = StringUtils.hasText(estado);
+        boolean temFaixa  = StringUtils.hasText(faixaEtaria);
+        boolean temVacina  = StringUtils.hasText(vacina);
+        if(temFaixa) {
+            int idadeMin = this.faixaEtaria(faixaEtaria)[0];
+            int idadeMax = this.faixaEtaria(faixaEtaria)[1];
+            if (temEstado && temFaixa && temVacina)  return registroVacinacaoRepository.findRegistroVacinacaoByUfEIdadeEVacina(idadeMin, idadeMax, estado, vacina, pageable);
+            if (temEstado && temFaixa)  return registroVacinacaoRepository.findRegistroVacinacaoByUfEFaixaEtaria(idadeMin, idadeMax, estado, pageable);
+            if (temVacina && temFaixa)  return registroVacinacaoRepository.findRegistroVacinacaoByFaixaEtariaEVacina(idadeMin, idadeMax, vacina, pageable);
+            if (temFaixa) return registroVacinacaoRepository.findRegistroVacinacaoByFaixaEtaria(idadeMin,idadeMax,pageable);
+        }
+        if (temEstado && temVacina)  return registroVacinacaoRepository.findRegistroVacinacaoByUfEVacina(estado, vacina, pageable);
+        if (temVacina) return registroVacinacaoRepository.findRegistroVacinacaoByVacina(vacina, pageable);
+        if (temEstado) return registroVacinacaoRepository.findRegistroVacinacaoByUf(estado, pageable);;
+        return listar(page, size);
     }
 }
 
