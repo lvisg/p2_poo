@@ -32,6 +32,7 @@ Projeto prático desenvolvido para a disciplina da Profa. Sirley Ambrosia Vitori
    spring.datasource.url=jdbc:mysql://localhost:3306/imunidata
    spring.datasource.username=seu_usuario
    spring.datasource.password=sua_senha
+```
 
 6. Execute o programa na porta 8080, através do main em sua IDE de escolha.
 
