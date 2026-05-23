@@ -2,7 +2,8 @@
 
 Projeto prático desenvolvido para a disciplina da Profa. Sirley Ambrosia Vitorio Addão, com o objetivo de criar uma aplicação Full Stack (Java + React) para consultar e analisar dados de cobertura vacinal, disponibilizados pelo SUS.
 
-##Autores
+## Autores
+
 Bruno Damasio Silva
 Lucas Bortoline Chung
 Luis Gustavo de Souza Santos
