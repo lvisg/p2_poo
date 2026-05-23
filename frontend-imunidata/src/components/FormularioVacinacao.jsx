@@ -126,6 +126,8 @@ function FormularioVacinacao({ aoSalvar, registroEditando, aoCancelar }) {
         <div className="campo"><label>Raça/cor</label><input type="text" value={form.paciente.raca || ''} onChange={(e) => alterarPaciente('raca', e.target.value)} /></div>
         <div className="campo"><label>Município paciente</label><input type="text" value={form.paciente.municipioPaciente || ''} onChange={(e) => alterarPaciente('municipioPaciente', e.target.value)} /></div>
         <div className="campo"><label>UF paciente</label><input type="text" maxLength="2" value={form.paciente.ufPaciente || ''} onChange={(e) => alterarPaciente('ufPaciente', e.target.value.toUpperCase())} /></div>
+        <div className="campo"><label>Gestante</label><input type="text" value={form.paciente.condicaoMaternal || ''} onChange={(e) => alterarPaciente('condicaoMaternal', e.target.value.toUpperCase())} /></div>
+        <div className="campo"><label>Etnia Índigena</label><input type="text" value={form.paciente.etniaIndigena || ''} onChange={(e) => alterarPaciente('etniaIndigena', e.target.value.toUpperCase())} /></div>
       </div>
 
       <h3>Estabelecimento</h3>
