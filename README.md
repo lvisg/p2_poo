@@ -72,3 +72,41 @@ PUT
 ![Método PUT](./imagens/put.png)
 Erro 404:
 ![Método ERRO 404](./imagens/delete_404.png)
+
+##Dicionário de Dados
+Aqui está o dicionário de dados final, contendo exatamente as colunas **Nome da Coluna**, **Tipo** e **Descrição**:
+
+### 📖 Dicionário de Dados
+
+**Tabela:** `registro_vacinacao`
+
+| Nome da Coluna | Tipo | Descrição |
+| --- | --- | --- |
+| `id` | `INT` | Identificador único do registro de vacinação. |
+| `data_vacinacao` | `DATE` | Data em que a vacina foi administrada. |
+| `via_administracao` | `VARCHAR(255)` | Via utilizada para a aplicação da vacina (ex: Intramuscular). |
+| `categoria_grupo_de_vacinacao` | `VARCHAR(255)` | Categoria do grupo prioritário ou alvo (ex: Trabalhador da Saúde, Idoso). |
+| `codigo_dose` | `VARCHAR(255)` | Código numérico ou alfanumérico referente à dose. |
+| `descricao_dose` | `VARCHAR(255)` | Descrição textual da dose (ex: "1ª Dose", "Dose Única"). |
+| `lote_vacina` | `VARCHAR(255)` | Número de identificação do lote da vacina aplicada. |
+| `codigo_vacina` | `VARCHAR(255)` | Código padronizado (ex: SUS/SIPNI) que identifica a vacina. |
+| `sigla_vacina` | `VARCHAR(255)` | Sigla comercial ou governamental da vacina. |
+| `descricao_vacina` | `VARCHAR(255)` | Nome completo/descrição do imunizante (ex: COVID-19 PFIZER). |
+| `codigo_fabricante` | `VARCHAR(255)` | Código de registro do fabricante ou laboratório. |
+| `fabricante` | `VARCHAR(255)` | Nome do laboratório fabricante (ex: Butantan, Pfizer). |
+| `codigo_cnes` | `VARCHAR(255)` | Código do Cadastro Nacional de Estabelecimentos de Saúde (CNES). |
+| `razao_social` | `VARCHAR(255)` | Razão social oficial do estabelecimento aplicador. |
+| `nome_fantasia` | `VARCHAR(255)` | Nome fantasia do posto de saúde ou unidade hospitalar. |
+| `municipio` | `VARCHAR(255)` | Município onde a vacina foi efetivamente aplicada. |
+| `uf` | `VARCHAR(255)` | Estado (UF) onde o estabelecimento está localizado. |
+| `codigo_paciente` | `VARCHAR(255)` | Código interno ou hash que identifica o paciente. |
+| `sexo` | `VARCHAR(255)` | Sexo biológico do paciente. |
+| `raca` | `VARCHAR(255)` | Raça ou cor declarada do paciente. |
+| `municipio_paciente` | `VARCHAR(255)` | Cidade de residência do paciente. |
+| `pais_paciente` | `VARCHAR(255)` | País de residência do paciente. |
+| `uf_paciente` | `VARCHAR(255)` | Estado (UF) de residência do paciente. |
+| `nacionalidade` | `VARCHAR(255)` | Nacionalidade (país de origem) do paciente. |
+| `status` | `VARCHAR(255)` | Status do registro do paciente na base de dados. |
+| `etnia_indigena` | `VARCHAR(255)` | Descrição da etnia (se aplicável ao grupo de vacinação). |
+| `condicao_maternal` | `VARCHAR(255)` | Indica se há condição de gestação ou puerpério. |
+| `idade` | `INT` | Idade exata do paciente no momento em que tomou a dose. |
