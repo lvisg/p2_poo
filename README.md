@@ -4,9 +4,9 @@ Projeto prático desenvolvido para a disciplina da Profa. Sirley Ambrosia Vitori
 
 ## Autores
 
-Bruno Damasio Silva
-Lucas Bortoline Chung
-Luis Gustavo de Souza Santos
+*Bruno Damasio Silva
+*Lucas Bortoline Chung
+*Luis Gustavo de Souza Santos
 
 ## Tecnologias e Requisitos Técnicos
 
